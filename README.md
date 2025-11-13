@@ -17,7 +17,7 @@ streamlitによるwebアプリに以下の機能を実装する。
 - [streamlit](https://streamlit.io)
 - [MDAnalysis](https://www.mdanalysis.org)
 - [matplotlib](https://matplotlib.org)
-- [NGLviewer](http://nglviewer.org)
+- [stmol](https://github.com/napoles-uach/stmol)
 
 ## 使い方
 1. サーバーホスト機で`run_hole_webapp`を実行する

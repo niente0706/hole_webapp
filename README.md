@@ -20,6 +20,7 @@ streamlitによるwebアプリに以下の機能を実装する。
 - [stmol](https://github.com/napoles-uach/stmol)
 
 ## 使い方
-1. サーバーホスト機で`run_hole_webapp`を実行する
-2. localhost用とネットワーク用にURLが表示されるのでそれをコピーする
-3. ブラウザからURLにアクセスする
+1. `$HOLE_WEBAPP_PATH`をこのリポジトリのディレクトリに設定する
+2. サーバーホスト機で`run_hole_webapp`を実行する
+3. localhost用とネットワーク用にURLが表示されるのでそれをコピーする
+4. ブラウザからURLにアクセスする

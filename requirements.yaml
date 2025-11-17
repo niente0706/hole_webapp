@@ -1,0 +1,16 @@
+name: hole_webapp
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - mdanalysis=2.9.0
+  - mdahole2
+  - matplotlib
+  - streamlit
+  - ipython_genutils
+  - requests
+  - pip:
+    - py3Dmol==2.0.0.post2
+    - stmol==0.0.9

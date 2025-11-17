@@ -1,0 +1,5 @@
+# home dir path
+${HOLE_WEBAPP_PATH:-"."}
+
+# run app
+streamlit run "${HOLE_WEBAPP_PATH}/src/hole_webapp.py"

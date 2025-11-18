@@ -29,7 +29,7 @@ def reset_logger(logpath):
     logger.addHandler(file_handler)
     logger.info("Logger initialized.")
 
-hole_webapp_path = os.environ.get('HOLE_WEBAPP_PATH', '.')
+hole_webapp_path = '.'
 hole_exe_path = os.path.join(hole_webapp_path, 'hole2', 'exe', 'hole')
 hole_rad_dir_path = os.path.join(hole_webapp_path, 'hole2', 'rad')
 
@@ -142,6 +142,7 @@ if hole_submit and 'pdb_path' in st.session_state:
         'output_level': level,
         'executable': hole_exe_path
     }
+    st.write(hole_args)
     
     logger.info("Starting HOLE analysis with parameters:")
     for k, v in hole_args.items():
@@ -198,7 +199,7 @@ if hole_submit and 'pdb_path' in st.session_state:
     logger.info(f"Created download zip at {st.session_state['download_path']}")
 
 st.session_state['style'] = st.selectbox('style', ['cartoon', 'stick', 'sphere', 'line', 'cross'])
-st.session_state['pore_transparency'] = st.number_input('pore transparency', min_value=0.0, max_value=1.0, value=0.5, step=0.01)
+st.session_state['pore_transparency'] = st.slider('pore transparency', min_value=0.0, max_value=1.0, value=0.5, step=0.01)
 st.session_state['pore_color'] = st.color_picker('pore color', value='#00FFFF')
 if 'pdb_path' in st.session_state:
     st.session_state['stmol_view'].addModel(open(st.session_state['pdb_path']).read(), 'pdb')

@@ -19,8 +19,21 @@ streamlitによるwebアプリに以下の機能を実装する。
 - [matplotlib](https://matplotlib.org)
 - [stmol](https://github.com/napoles-uach/stmol)
 
-## 使い方
-1. `$HOLE_WEBAPP_PATH`をこのリポジトリのディレクトリに設定する
-2. サーバーホスト機で`run_hole_webapp`を実行する
-3. localhost用とネットワーク用にURLが表示されるのでそれをコピーする
-4. ブラウザからURLにアクセスする
+## セットアップ
+```bash
+git clone https://github.com/niente0706/hole_webapp.git
+cd hole_webapp
+conda create env -f requirements.txt
+chmod +x run_hole_webapp
+nohup run_hole_webapp
+```
+
+## 終了方法
+```bash
+pgrep -f hole_webapp
+# 出てきたプロセスIDをkill
+kill xxxxx
+```
+
+## 注意点
+PDBの名前(具体的には`./logs/YYYYMMDD_PDBNAME/PDBNAME.ext`)の文字数が長すぎる(70文字程度)を超えるとHOLEの仕様でパスがうまく読めなくなるのでエラーを吐きます。長すぎない名前に変えて再実行してください。

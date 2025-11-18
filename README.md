@@ -24,6 +24,7 @@ streamlitによるwebアプリに以下の機能を実装する。
 git clone https://github.com/niente0706/hole_webapp.git
 cd hole_webapp
 conda create env -f requirements.txt
+conda activate hole_webapp
 chmod +x run_hole_webapp
 nohup run_hole_webapp
 ```

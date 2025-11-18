@@ -26,7 +26,7 @@ cd hole_webapp
 conda create env -f requirements.txt
 conda activate hole_webapp
 chmod +x run_hole_webapp
-nohup run_hole_webapp
+nohup ./run_hole_webapp
 ```
 
 ## 終了方法

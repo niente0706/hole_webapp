@@ -142,7 +142,6 @@ if hole_submit and 'pdb_path' in st.session_state:
         'output_level': level,
         'executable': hole_exe_path
     }
-    st.write(hole_args)
     
     logger.info("Starting HOLE analysis with parameters:")
     for k, v in hole_args.items():

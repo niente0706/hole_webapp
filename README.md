@@ -37,4 +37,26 @@ kill xxxxx
 ```
 
 ## 注意点
+### ログ機能は開発中
+pythonの組み込みのロギング機能ではなぜかうまくログがファイルに記録されないようです。Streamlitは独自にロガーをもっているようなので、手が空き次第そちらを使って実装します。
+
+
+### ファイルの文字数制限
 PDBの名前(具体的には`./logs/YYYYMMDD_PDBNAME/PDBNAME.ext`)の文字数が長すぎる(70文字程度)を超えるとHOLEの仕様でパスがうまく読めなくなるのでエラーを吐きます。長すぎない名前に変えて再実行してください。
+
+### 原子名の文字数制限
+HOLEの実装では(おそらく)厳格なPDBのフォーマットに従って原子名の先頭を読んで原子種を決めているようで、4文字以上の原子名では原子を正しく読み込めないようです。特に、4文字表記の原子名の2文字目が数字のような例ではHOLEが
+```
+***ERROR***
+ Cannot find vdW radius for atom:
+```
+と言って止まってしまい、streamlit内の処理で
+```
+KeyError: 0
+Traceback:
+File "/path/to/hole_webapp/src/hole_webapp.py", line 152, in <module>
+    pore_axis = hole_output[0].rxn_coord
+```
+というエラーが表示されます。
+このような場合には読み込むPDBに対して事前に`src/rename_shorter.py`を使って原子名を3文字に変えておいてください。
+>>>>>>> Stashed changes

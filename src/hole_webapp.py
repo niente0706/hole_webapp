@@ -82,7 +82,15 @@ if input_submit:
         log_dir = make_logdir(pdb_name)
         pdb_path = os.path.join(log_dir, f'{pdb_name}.pdb')
         with open(pdb_path, 'w', encoding='utf-8') as f:
-            f.write(pdb.getvalue().decode('utf-8'))
+            pdb_lines = pdb.getvalue().decode('utf-8')
+            for line in pdb_lines.splitlines():
+                if line.startswith('ATOM') or line.startswith('HETATM'):
+                    name = line[12:16].strip()
+                    if len(name) == 4:
+                        name = name[:3]
+                    f.write(line[:12] + f' {name:<3}' + line[16:] + '\n')
+                else:
+                    f.write(line + '\n')
     elif input_method == 'Fetch PDB from RCSB' and pdb_id:
         pdb_url = f'https://files.rcsb.org/download/{pdb_id.upper()}.pdb'
         response = requests.get(pdb_url)
